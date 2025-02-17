@@ -15,7 +15,8 @@ def decomp_dataset(datasets, max_size=None):
     for ds in datasets:
         in_path = f"data/{ds}/test.jsonl"
         out_path = f"data/{ds}/test.decomp.jsonl"
-        batch_decompose(in_path, out_path, gpt, max_size=max_size)
+        if ds != "NQ":
+            batch_decompose(in_path, out_path, gpt, max_size=max_size)
     return
 
 def infer_dataset(datasets, sc_num, sc_threshold, n_doc, n_refer, min_refer_label_num, max_size=None):
